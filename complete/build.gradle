@@ -62,7 +62,7 @@ dependencies {
 }
 
 bootRun {
-    jvmArgs = ['-Xmx200m', '-Xms200m']
+    jvmArgs = ['-Xmx512m', '-Xms512m']
     addResources = true
 }
 
