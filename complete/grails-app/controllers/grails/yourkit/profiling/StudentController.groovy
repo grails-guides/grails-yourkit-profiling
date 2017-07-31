@@ -17,4 +17,9 @@ class StudentController {
         render "Student Count: $count"
     }
 
+    def print() {
+        String result = studentService.printStudents()
+        render result
+    }
+
 }

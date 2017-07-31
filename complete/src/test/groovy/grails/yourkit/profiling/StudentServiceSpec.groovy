@@ -37,4 +37,14 @@ class StudentServiceSpec extends HibernateSpec {
         then:
         students.size() < StudentService.LARGE_NUMBER
     }
+
+    def 'test printStudents'() {
+        when:
+        service.insertStudents()
+        String results = service.printStudents()
+
+        then:
+        println results
+        !results.isEmpty()
+    }
 }

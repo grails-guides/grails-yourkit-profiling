@@ -4,6 +4,7 @@ class StudentService {
 
     static final int LARGE_NUMBER = 5000
     static final int boundary = 100
+    static final BigDecimal A_GRADE = 90
 
     Random random = new Random()
 
@@ -14,10 +15,19 @@ class StudentService {
     }
 
     void deleteStudents() {
-        List<Student> students = Student.findAllByGradeLessThan(90)
+        List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
         for (s in students) {
             s.delete(flush: true)
         }
+    }
+
+    String printStudents() {
+        List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
+        String result = ""
+        for (s in students) {
+            result += "<p>${s.toString()}<p>"
+        }
+        result
     }
 
     protected String produceRandomName() {
