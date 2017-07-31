@@ -70,6 +70,9 @@
                     <tr>
                         <td><a href="${createLink (controller:"student", action: "print")}">Print Students</a>
                     </tr>
+                    <tr>
+                        <td><a href="${createLink (controller:"student", action: "importStudents")}">Import Students</a>
+                    </tr>
                 </table>
             </div>
         </section>

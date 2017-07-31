@@ -47,4 +47,21 @@ class StudentServiceSpec extends HibernateSpec {
         println results
         !results.isEmpty()
     }
+
+    def 'test importStudents'() {
+        when:
+        List<Map> studentData = service.importStudents("studentImport-test.xlsx")
+        println studentData.dump()
+
+        then:
+        studentData.size() == 3
+    }
+
+    def 'test saveExcelStudents'() {
+        when:
+        service.saveExcelStudents("studentImport-test.xlsx")
+
+        then:
+        Student.count == 3
+    }
 }

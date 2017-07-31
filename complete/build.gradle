@@ -58,10 +58,11 @@ dependencies {
     testCompile "org.grails:grails-test-mixins:3.3.0.RC1"
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
+    compile 'org.grails.plugins:excel-import:3.0.0.RC4'
 }
 
 bootRun {
-    jvmArgs('-Dspring.output.ansi.enabled=always')
+    jvmArgs = ['-Xmx200m', '-Xms200m']
     addResources = true
 }
 

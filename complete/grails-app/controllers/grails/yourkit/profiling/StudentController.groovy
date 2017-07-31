@@ -22,4 +22,10 @@ class StudentController {
         render result
     }
 
+    def importStudents() {
+        studentService.saveExcelStudents("studentImport.xlsx")
+        def count = Student.count
+        render "Student Count: $count"
+    }
+
 }
