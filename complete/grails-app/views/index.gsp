@@ -71,7 +71,10 @@
                         <td><a href="${createLink (controller:"student", action: "print")}">Print Students</a>
                     </tr>
                     <tr>
-                        <td><a href="${createLink (controller:"student", action: "importStudents")}">Import Students</a>
+                        <td><a href="${createLink (controller:"student", action: "import25kStudents")}">Import 25k Students</a>
+                    </tr>
+                    <tr>
+                        <td><a href="${createLink (controller:"student", action: "import75kStudents")}">Import 75k Students</a>
                     </tr>
                 </table>
             </div>

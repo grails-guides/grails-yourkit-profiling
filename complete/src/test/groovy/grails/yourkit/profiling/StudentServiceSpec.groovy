@@ -50,7 +50,7 @@ class StudentServiceSpec extends HibernateSpec {
 
     def 'test importStudents'() {
         when:
-        List<Map> studentData = service.importStudents("studentImport-test.xlsx")
+        List<Map> studentData = service.importStudents("studentImport-3rows.xlsx")
         println studentData.dump()
 
         then:
@@ -59,7 +59,7 @@ class StudentServiceSpec extends HibernateSpec {
 
     def 'test saveExcelStudents'() {
         when:
-        service.saveExcelStudents("studentImport-test.xlsx")
+        service.saveExcelStudents("studentImport-3rows.xlsx")
 
         then:
         Student.count == 3
