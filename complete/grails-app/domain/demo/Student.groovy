@@ -1,4 +1,4 @@
-package grails.yourkit.profiling
+package demo
 
 import grails.compiler.GrailsCompileStatic
 

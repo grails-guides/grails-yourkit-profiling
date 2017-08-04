@@ -1,4 +1,4 @@
-package grails.yourkit.profiling
+package demo
 
 import grails.boot.GrailsApp
 import grails.boot.config.GrailsAutoConfiguration

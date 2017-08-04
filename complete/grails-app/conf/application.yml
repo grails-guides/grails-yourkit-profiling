@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: grails.yourkit.profiling
+        defaultPackage: demo
     spring:
         transactionManagement:
             proxies: false

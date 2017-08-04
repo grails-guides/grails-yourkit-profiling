@@ -1,12 +1,13 @@
-package grails.yourkit.profiling
+package demo
 
 class StudentController {
 
+    static final int LARGE_NUMBER = 20000
     static scaffold = Student
     StudentService studentService
 
     def insert() {
-        studentService.insertStudents()
+        studentService.insertStudents(LARGE_NUMBER)
         def count = Student.count
         render "Student Count: $count"
     }

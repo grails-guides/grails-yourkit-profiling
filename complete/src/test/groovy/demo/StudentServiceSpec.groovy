@@ -1,4 +1,4 @@
-package grails.yourkit.profiling
+package demo
 
 import grails.test.hibernate.HibernateSpec
 import grails.test.mixin.TestFor
@@ -19,28 +19,28 @@ class StudentServiceSpec extends HibernateSpec {
 
     def 'test insertStudents'() {
         when:
-        service.insertStudents()
+        service.insertStudents(100)
         List<Student> students = Student.list()
 
         then:
-        students.size() == StudentService.LARGE_NUMBER
+        students.size() == 100
     }
 
     def 'test deleteStudents'() {
         given:
-        service.insertStudents()
+        service.insertStudents(100)
 
         when:
         service.deleteStudents()
         List<Student> students = Student.list()
 
         then:
-        students.size() < StudentService.LARGE_NUMBER
+        students.size() < 100
     }
 
     def 'test printStudents'() {
         when:
-        service.insertStudents()
+        service.insertStudents(100)
         String results = service.printStudents()
 
         then:

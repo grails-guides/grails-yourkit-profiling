@@ -1,4 +1,4 @@
-package grails.yourkit.profiling
+package demo
 
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.usermodel.WorkbookFactory
@@ -6,7 +6,6 @@ import org.grails.plugins.excelimport.ExcelImportService
 
 class StudentService {
 
-    static final int LARGE_NUMBER = 5000
     static final int boundary = 100
     static final BigDecimal A_GRADE = 90
     static final Map CONFIG_STUDENT_COLUMN_MAP = [
@@ -20,8 +19,8 @@ class StudentService {
 
     Random random = new Random()
 
-    void insertStudents() {
-        LARGE_NUMBER.times {
+    void insertStudents(int numberOfStudents) {
+        numberOfStudents.times {
             Student student = new Student(name: produceRandomName(), grade: random.nextInt(boundary)).save()
         }
     }
@@ -57,7 +56,7 @@ class StudentService {
     }
 
     protected String produceRandomName() {
-        String randomName = "Name" + random.nextInt(2*LARGE_NUMBER)
+        String randomName = "Name" + random.nextInt(1000)
         randomName
     }
 }
