@@ -30,7 +30,7 @@ class StudentOptimizedService {
     }
 
     String printStudents() {
-        List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
+        List<Student> students = Student.list()
         StringBuffer result = new StringBuffer()
         for (s in students) {
             result.append("<p>${s.toString()}<p>")
@@ -53,7 +53,7 @@ class StudentOptimizedService {
     }
 
     protected String produceRandomName() {
-        String randomName = "Name" + random.nextInt(2*LARGE_NUMBER)
+        String randomName = "Name" + random.nextInt(2*boundary)
         randomName
     }
 }

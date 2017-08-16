@@ -1,1 +1,4 @@
-In this guide you are going to...
+In this guide you are going to learn how to profile memory and CPU on a Grails Application.  An application is already created
+for you with contrived scenarios that spike memory and CPU parameters. We will examine these scenarios and the associated code
+in order to profile memory, CPU, heap and garbage collection. We will then continue to optimize the code and see how it affects
+performance.

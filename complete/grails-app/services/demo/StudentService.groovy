@@ -33,7 +33,7 @@ class StudentService {
     }
 
     String printStudents() {
-        List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
+        List<Student> students = Student.list()
         String result = ""
         for (s in students) {
             result += "<p>${s.toString()}<p>"
@@ -56,7 +56,7 @@ class StudentService {
     }
 
     protected String produceRandomName() {
-        String randomName = "Name" + random.nextInt(1000)
+        String randomName = "Name" + random.nextInt(2*boundary)
         randomName
     }
 }
