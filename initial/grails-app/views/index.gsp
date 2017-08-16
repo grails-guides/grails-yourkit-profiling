@@ -59,7 +59,7 @@
                     </g:each>
                 </ul>
 
-                <h2>Grails Your Profiling Operations</h2>
+                <h2>Grails YourKit Profiling Operations</h2>
                 <table id="profileOperations">
                     <tr>
                         <td><a href="${createLink (controller:"student", action: "insert")}">Insert Students</a>
