@@ -2,7 +2,18 @@ gettingStarted:
   title: Getting Started
   requirements: What you will need
   howto: How to complete the guide
-writingTheApp:
-  title: Writing the Application
-runningTheApp:
-  title: Running the Application
+evaluatingTheApp:
+  title: Evaluating the Application
+  installYourKit: Install YourKit
+  startProfiling: Start Profiling
+  insertStudents: Insert Students
+inefficientDelete:
+  title: Inefficient Delete
+excessiveGarbageCollection:
+  title: Excessive Garbage Collection
+excessiveHeapMemory:
+  title: Excessive Heap Memory
+conclusion:
+  title: Conclusion
+  yourKitBestFeatures:  YourKit's Best Features
+  takeaways: Profiling Takeaways
