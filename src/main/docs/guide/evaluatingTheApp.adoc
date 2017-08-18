@@ -42,3 +42,6 @@ operation within the context of the profiler.
 ----
 $ grails run-app
 ----
+
+===== Application Front Page
+image:app_front.jpg[500,500]

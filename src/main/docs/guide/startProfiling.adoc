@@ -16,3 +16,6 @@ with the attachment or other profiling functions.
 - Start the application with the command `grails run-app` or use the Run Configuration in the IDE `Grails: initial`
 - Start the YourKit Profiler and in the Monitor Local Applications section, click on the `Application` PID.
 - Initiate the binding early in the application startup process for best results.
+
+===== Monitor Local Applications
+image::monitoring.jpg[500,500]
