@@ -12,11 +12,13 @@ class StudentController {
         render "Student Count: $count"
     }
 
+    //tag::delete[]
     def delete() {
         studentOptimizedService.deleteStudents()
         def count = Student.count
         render "Student Count: $count"
     }
+    //end::delete[]
 
     def print() {
         String result = studentOptimizedService.printStudents()

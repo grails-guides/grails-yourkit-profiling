@@ -25,9 +25,11 @@ class StudentOptimizedService {
         }
     }
 
+    //tag::deleteStudentsOptimized[]
     void deleteStudents() {
         Student.executeUpdate("delete Student where grade <= ${A_GRADE}")
     }
+    //end::deleteStudentsOptimized[]
 
     String printStudents() {
         List<Student> students = Student.list()

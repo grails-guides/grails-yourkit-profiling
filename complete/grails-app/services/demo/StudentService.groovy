@@ -25,12 +25,14 @@ class StudentService {
         }
     }
 
+    //tag::deleteStudents[]
     void deleteStudents() {
         List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
         for (s in students) {
             s.delete(flush: true)
         }
     }
+    //end::deleteStudents[]
 
     String printStudents() {
         List<Student> students = Student.list()
