@@ -31,6 +31,7 @@ class StudentOptimizedService {
     }
     //end::deleteStudentsOptimized[]
 
+    //tag::printStudentsOptimized[]
     String printStudents() {
         List<Student> students = Student.list()
         StringBuffer result = new StringBuffer()
@@ -39,6 +40,7 @@ class StudentOptimizedService {
         }
         result
     }
+    //end::printStudentsOptimized[]
 
     void saveExcelStudents(String fileName) {
         List<Map> studentData = importStudents(fileName)

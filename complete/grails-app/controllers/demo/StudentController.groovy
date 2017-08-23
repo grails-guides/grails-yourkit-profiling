@@ -20,10 +20,12 @@ class StudentController {
     }
     //end::delete[]
 
+    //tag::print[]
     def print() {
         String result = studentOptimizedService.printStudents()
         render result
     }
+    //end::print[]
 
     def import25kStudents() {
         studentOptimizedService.saveExcelStudents("studentImport-25krows.xlsx")

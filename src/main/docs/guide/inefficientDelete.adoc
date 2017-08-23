@@ -1,4 +1,4 @@
-The application has inefficient delete functionality. Upon `Delete Student`, the application takes an excessive amount of
+The application has inefficient delete functionality. Upon `Delete Students`, the application takes an excessive amount of
 time to delete students that have grades less that 90. Let's demonstrate how this can be analyzed with YourKit.
 
 === Analyze In Profiler
@@ -18,7 +18,7 @@ the profiler was started till the moment the snapshot was initiated. Once the sn
 
 . Navigate to Java EE Statistics->Database. Here we can see the excessive amount of delete statements made to the database,
 along with the length of time. In the Reverse Call Tree, we can see the application method call responsible:
-`demo.StudentService.deleteStudents(). You may right-click and Open in IDE, which will take you directly to the code.
+`demo.StudentService.deleteStudents()`. You may right-click and Open in IDE, which will take you directly to the code.
 
 .. image:cpu_database.jpg[700,700]
 

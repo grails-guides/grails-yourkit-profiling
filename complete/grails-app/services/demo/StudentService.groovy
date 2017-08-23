@@ -34,6 +34,7 @@ class StudentService {
     }
     //end::deleteStudents[]
 
+    //tag::printStudents[]
     String printStudents() {
         List<Student> students = Student.list()
         String result = ""
@@ -42,6 +43,7 @@ class StudentService {
         }
         result
     }
+    //end::printStudents[]
 
     void saveExcelStudents(String fileName) {
         List<Map> studentData = importStudents(fileName)
