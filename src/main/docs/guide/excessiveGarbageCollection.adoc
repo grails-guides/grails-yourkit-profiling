@@ -1,7 +1,7 @@
 The application prints all the students to the screen in a very inefficient manner. Upon `Print Students`, the application creates
 an excessive amount of objects. This results in the JVM overcompensating with garbage collection.
 
-Restart the application with profiling and operate `Insert Students` (2 times) to set up the scenario.
+Set up the next scenario by restarting the application with profiling and execute `Insert Students` (2 times) to set up the scenario.
 
 === Analyze In Profiler
 

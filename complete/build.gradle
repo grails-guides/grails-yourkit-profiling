@@ -61,10 +61,12 @@ dependencies {
     compile 'org.grails.plugins:excel-import:3.0.0.RC4'
 }
 
+//tag::jvmargs[]
 bootRun {
     jvmArgs = ['-Xmx1024m', '-Xms1024m']
     addResources = true
 }
+//end::jvmargs[]
 
 
 assets {
