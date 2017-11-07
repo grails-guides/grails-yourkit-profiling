@@ -52,12 +52,14 @@ class StudentService {
         }
     }
 
+    //tag::importStudents[]
     protected List<Map> importStudents(String fileName) {
         Workbook workbook = WorkbookFactory.create(new File(fileName))
         ExcelImportService excelImportService = new ExcelImportService()
         List<Map> studentData = excelImportService.convertColumnMapConfigManyRows(workbook, CONFIG_STUDENT_COLUMN_MAP)
         studentData
     }
+    //end::importStudents[]
 
     protected String produceRandomName() {
         String randomName = "Name" + random.nextInt(2*boundary)
