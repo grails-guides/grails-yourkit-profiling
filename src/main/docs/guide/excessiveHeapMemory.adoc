@@ -51,7 +51,7 @@ This type of memory issue is difficult to track down but fortunately the solutio
 in memory will solve the object allocation. No code change is needed. Adjust the file below:
 
 [source, groovy]
-.build.gradles
+.build.gradle
 ----
 include::{sourceDir}/build.gradle[tag=jvmargs]
 ----

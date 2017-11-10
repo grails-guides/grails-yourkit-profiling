@@ -5,7 +5,7 @@ The application is titled Grails YourKit Profile and has a simple domain object 
 that trigger operations for the purpose of inducing performance issues. In summary, the application has the ability to:
 
 - insert a large amount of students in the database (with random names and grades)
-- delete students that have a grade less that an A.
+- delete students that have a grade less that an A
 - print the students to the screen
 - import a spreadsheet of student entries
 
