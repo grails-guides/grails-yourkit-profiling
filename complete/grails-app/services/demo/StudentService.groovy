@@ -3,8 +3,13 @@ package demo
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.grails.plugins.excelimport.ExcelImportService
+import groovy.transform.CompileStatic
+import grails.gorm.transactions.Transactional
 
+@CompileStatic
 class StudentService {
+
+    StudentDataService studentDataService
 
     static final int boundary = 100
     static final BigDecimal A_GRADE = 90
@@ -19,36 +24,40 @@ class StudentService {
 
     Random random = new Random()
 
+    @Transactional
     void insertStudents(int numberOfStudents) {
         numberOfStudents.times {
-            Student student = new Student(name: produceRandomName(), grade: random.nextInt(boundary)).save()
+            BigDecimal grade = random.nextInt(boundary) as BigDecimal
+            studentDataService.save(produceRandomName(), grade)
         }
     }
 
     //tag::deleteStudents[]
-    void deleteStudents() {
-        List<Student> students = Student.findAllByGradeLessThan(A_GRADE)
-        for (s in students) {
-            s.delete(flush: true)
-        }
+    void deleteStudentsWithGradleLessThanA() {
+        studentDataService.deleteByGradleLessThan(A_GRADE)
     }
     //end::deleteStudents[]
 
-    //tag::printStudents[]
-    String printStudents() {
-        List<Student> students = Student.list()
-        String result = ""
+    //tag::htmlUnorderedListOfStudents[]
+    String htmlUnorderedListOfStudents() {
+        List<Student> students = studentDataService.findAll()
+        StringBuffer result = new StringBuffer()
+        result.append('<ul>')
         for (s in students) {
-            result += "<p>${s.toString()}<p>"
+            result.append('<li>')
+            result.append(s.toString())
+            result.append('</li>')
         }
-        result
+        result.append('</ul>')
+        result.toString()
     }
-    //end::printStudents[]
+    //end::htmlUnorderedListOfStudents[]
 
+    @Transactional
     void saveExcelStudents(String fileName) {
         List<Map> studentData = importStudents(fileName)
-        for (s in studentData) {
-            new Student(name: s.name, grade: s.grade).save()
+        for (Map s in studentData) {
+            studentDataService.save(s.name as String, s.grade as BigDecimal)
         }
     }
 
@@ -56,14 +65,11 @@ class StudentService {
     protected List<Map> importStudents(String fileName) {
         Workbook workbook = WorkbookFactory.create(new File(fileName))
         ExcelImportService excelImportService = new ExcelImportService()
-        List<Map> studentData = excelImportService.convertColumnMapConfigManyRows(workbook, CONFIG_STUDENT_COLUMN_MAP)
-        studentData
+        excelImportService.convertColumnMapConfigManyRows(workbook, CONFIG_STUDENT_COLUMN_MAP) as List<Map>
     }
     //end::importStudents[]
 
     protected String produceRandomName() {
-        String randomName = "Name" + random.nextInt(2*boundary)
-        randomName
+        "Name${random.nextInt(2*boundary)}"
     }
 }
-

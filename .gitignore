@@ -3,4 +3,6 @@ build
 .gradle
 .DS_Store
 *.iml
+*.class
+
 

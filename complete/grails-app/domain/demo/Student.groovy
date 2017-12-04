@@ -1,16 +1,13 @@
 package demo
 
-import grails.compiler.GrailsCompileStatic
+import groovy.transform.CompileStatic
 
-@GrailsCompileStatic
+@CompileStatic
 class Student {
     String name
     BigDecimal grade
 
     String toString() {
-        name + "-Grade:$grade"
-    }
-
-    static constraints = {
+        "${name}-Grade:$grade"
     }
 }

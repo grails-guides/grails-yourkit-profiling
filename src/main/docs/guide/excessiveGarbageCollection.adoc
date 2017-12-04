@@ -36,7 +36,7 @@ add it to the the `result` String object. This causes new String objects on ever
 [source, groovy]
 .grails-app/services/demo/StudentService.groovy
 ----
-include::{sourceDir}/grails-app/services/demo/StudentService.groovy[tag=printStudents]
+include::{sourceDir}/../initial/grails-app/services/demo/StudentService.groovy[tag=htmlUnorderedListOfStudents]
 ----
 
 === Improve the Code
@@ -44,17 +44,9 @@ include::{sourceDir}/grails-app/services/demo/StudentService.groovy[tag=printStu
 We can improve the code by using `StringBuffer`.
 
 [source, groovy]
-.grails-app/services/demo/StudentOptimizedService.groovy
+.grails-app/services/demo/StudentService.groovy
 ----
-include::{sourceDir}/grails-app/services/demo/StudentOptimizedService.groovy[tag=printStudentsOptimized]
-----
-
-In the `StudentController`, inject `StudentOptimizedService` and replace the `print()` action with the optimized service.
-
-[source, groovy]
-.grails-app/controllers/demo/StudentController.groovy
-----
-include::{sourceDir}/grails-app/controllers/demo/StudentController.groovy[tag=print]
+include::{sourceDir}/grails-app/services/demo/StudentService.groovy[tag=htmlUnorderedListOfStudents]
 ----
 
 Now that the code improvement is made, we should restart the application with the profiler. Repeat `Insert Students` again. Repeat the steps in

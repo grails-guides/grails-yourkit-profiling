@@ -1,38 +1,45 @@
 package demo
 
+import groovy.transform.CompileStatic
+import org.springframework.context.MessageSource
+
+@CompileStatic
 class StudentController {
 
     static final int LARGE_NUMBER = 20000
     static scaffold = Student
+    MessageSource messageSource
+
     StudentService studentService
+    StudentDataService studentDataService
 
     def insert() {
         studentService.insertStudents(LARGE_NUMBER)
-        def count = Student.count
-        render "Student Count: $count"
+        render studentCountMessage()
     }
 
     def delete() {
-        studentService.deleteStudents()
-        def count = Student.count
-        render "Student Count: $count"
+        studentService.deleteStudentsWithGradleLessThanA()
+        render studentCountMessage()
     }
 
     def print() {
-        String result = studentService.printStudents()
-        render result
+        render studentService.htmlUnorderedListOfStudents()
     }
 
     def import25kStudents() {
         studentService.saveExcelStudents("studentImport-25krows.xlsx")
-        def count = Student.count
-        render "Student Count: $count"
+        render studentCountMessage()
     }
 
     def import75kStudents() {
         studentService.saveExcelStudents("studentImport-75krows.xlsx")
-        def count = Student.count
-        render "Student Count: $count"
+        render studentCountMessage()
     }
 
+    protected String studentCountMessage() {
+        int count = studentDataService.count()
+        String defaultMsg = "Student Count: ${count}"
+        messageSource.getMessage('student.count', [count] as Object[], defaultMsg, request.locale)
+    }
 }

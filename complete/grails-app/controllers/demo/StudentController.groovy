@@ -1,42 +1,45 @@
 package demo
 
+import groovy.transform.CompileStatic
+import org.springframework.context.MessageSource
+
+@CompileStatic
 class StudentController {
 
     static final int LARGE_NUMBER = 20000
     static scaffold = Student
-    StudentOptimizedService studentOptimizedService
+    MessageSource messageSource
+
+    StudentService studentService
+    StudentDataService studentDataService
 
     def insert() {
-        studentOptimizedService.insertStudents(LARGE_NUMBER)
-        def count = Student.count
-        render "Student Count: $count"
+        studentService.insertStudents(LARGE_NUMBER)
+        render studentCountMessage()
     }
 
-    //tag::delete[]
     def delete() {
-        studentOptimizedService.deleteStudents()
-        def count = Student.count
-        render "Student Count: $count"
+        studentService.deleteStudentsWithGradleLessThanA()
+        render studentCountMessage()
     }
-    //end::delete[]
 
-    //tag::print[]
     def print() {
-        String result = studentOptimizedService.printStudents()
-        render result
+        render studentService.htmlUnorderedListOfStudents()
     }
-    //end::print[]
 
     def import25kStudents() {
-        studentOptimizedService.saveExcelStudents("studentImport-25krows.xlsx")
-        def count = Student.count
-        render "Student Count: $count"
+        studentService.saveExcelStudents("studentImport-25krows.xlsx")
+        render studentCountMessage()
     }
 
     def import75kStudents() {
-        studentOptimizedService.saveExcelStudents("studentImport-75krows.xlsx")
-        def count = Student.count
-        render "Student Count: $count"
+        studentService.saveExcelStudents("studentImport-75krows.xlsx")
+        render studentCountMessage()
     }
 
+    protected String studentCountMessage() {
+        int count = studentDataService.count()
+        String defaultMsg = "Student Count: ${count}"
+        messageSource.getMessage('student.count', [count] as Object[], defaultMsg, request.locale)
+    }
 }

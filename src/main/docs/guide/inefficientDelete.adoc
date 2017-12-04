@@ -30,25 +30,35 @@ issue a delete statement. Obviously this is responsible for the slowdown.
 [source, groovy]
 .grails-app/services/demo/StudentService.groovy
 ----
-include::{sourceDir}/grails-app/services/demo/StudentService.groovy[tag=deleteStudents]
+include::{sourceDir}/../initial/grails-app/services/demo/StudentService.groovy[tag=deleteStudents]
 ----
 
 === Improve the Code
 
-It is much more efficient to simply issue one delete statement with a `where` clause.
+It is much more efficient to simply issue one delete SQL query with a `where` clause.
+
+We are going to use the http://gorm.grails.org/latest/hibernate/manual/index.html#dataServices[GORM Data Service] with a delete operations using JPA-QL:
 
 [source, groovy]
-.grails-app/services/demo/StudentOptimizedService.groovy
+.grails-app/services/demo/StudentService.groovy
 ----
-include::{sourceDir}/grails-app/services/demo/StudentOptimizedService.groovy[tag=deleteStudentsOptimized]
+include::{sourceDir}/grails-app/services/demo/StudentService.groovy[tag=deleteStudents]
 ----
-
-In the `StudentController`, inject `StudentOptimizedService` and replace the `delete()` action with the optimized service.
 
 [source, groovy]
-.grails-app/controllers/demo/StudentController.groovy
+.grails-app/services/demo/StudentDataService.groovy
 ----
-include::{sourceDir}/grails-app/controllers/demo/StudentController.groovy[tag=delete]
+import grails.gorm.services.Query
+import grails.gorm.services.Service
+import groovy.transform.CompileStatic
+
+@CompileStatic
+@Service(Student)
+interface StudentDataService {
+  ...
+include::{sourceDir}/grails-app/services/demo/StudentDataService.groovy[tag=deleteByGradleLessThan]
+...
+}
 ----
 
 Now that the code improvement is made, we should restart the application with the profiler. Repeat `Insert Students` again. Repeat the steps in
