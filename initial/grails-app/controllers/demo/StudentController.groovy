@@ -1,11 +1,10 @@
 package demo
 
-import grails.gorm.transactions.Transactional
+
 import groovy.transform.CompileStatic
 import org.springframework.context.MessageSource
 
 @CompileStatic
-@Transactional
 class StudentController {
 
     static final int LARGE_NUMBER = 20000
