@@ -29,12 +29,12 @@ class StudentController {
     }
 
     def import25kStudents() {
-        studentService.saveExcelStudents("studentImport-25krows.xlsx")
+        studentService.saveExcelStudents("src/resources/studentImport-25krows.xlsx")
         render studentCountMessage()
     }
 
     def import75kStudents() {
-        studentService.saveExcelStudents("studentImport-75krows.xlsx")
+        studentService.saveExcelStudents("src/resources/studentImport-75krows.xlsx")
         render studentCountMessage()
     }
 
