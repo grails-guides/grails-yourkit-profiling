@@ -63,8 +63,9 @@ dependencies {
     runtime "com.bertramlabs.plugins:asset-pipeline-grails:3.0.11"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.mockito:mockito-core"
-   compile 'org.grails.plugins:excel-import:3.0.0.RC4'
+    compile 'org.grails.plugins:excel-import:3.0.0.RC4'
     compile "org.apache.poi:poi-ooxml:3.16"
+    compile "io.micronaut:micronaut-inject-groovy"
 }
 
 bootRun {
